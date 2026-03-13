@@ -598,7 +598,16 @@ def process_file(file_name, data_blocks: List[DataObj], fns: List[Function], sym
         f.write("};\n")
         f.write("#endif\n")
 
-    with open(os.path.join("./src/", file_path + ".cpp"), "w+") as f:
+    # file_setup.py did not work on anything from asm/d/tg/ 
+    # doing this here instead of in get_file_path because
+    # it's src/d/tg/* but include/d/t/*
+    try:
+        open(os.path.join("./src/", file_path + ".cpp"), "w+")
+        cpp_file_path = file_path
+    except:
+        cpp_file_path = file_path.replace(r"/t/", r"/tg/")
+
+    with open(os.path.join("./src/", cpp_file_path + ".cpp"), "w+") as f:
         f.write(f'#include "{file_path}.h"\n\n')
 
         f.write(f"{decl_header}\n\n")

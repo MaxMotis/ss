@@ -86,7 +86,7 @@ WhitespaceSensitiveMacros: [
 ]
 AttributeMacros: [DECOMP_INLINE, DECOMP_DONT_INLINE]
 
-# Taken from ogws :)
+#Taken from ogws :)
 IncludeCategories:
   - Regex:           '^<(nw4r|egg|Pack)?(\/)?types'     # "Types" headers
     Priority:        0
